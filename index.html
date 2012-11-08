@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>What Do I Need To Get On The Final?</title>
+        <meta name="description" content="What grade do I need on the final to pass the class?">
+		<link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div id="title">What Do I Need To Get On The Final?</div>
+        <div id="content">
+            Currently I have a <input type="text" class="tb" id="current" value="95" onkeypress="return isNumberKey(event)" onkeyup="updateScore()"/>% in the class.<br />
+            I'm aiming to get at least a <input type="text" class="tb" id="desired" onkeypress="return isNumberKey(event)" value="90" onkeyup="updateScore()"/>%<br />
+            The final is worth <input type="text" class="tb" id="weight" value="20" onkeypress="return isNumberKey(event)" onkeyup="updateScore()"/>% of my grade.<br /><br />
+            So I need to get at least a <span id="result">70%</span> on the final.
+        </div>
+        <div id="footer">
+            Created by <a href="http://www.zuhairparvez.com">Zuhair Parvez</a>, &copy 2012
+        </div>
+	<script src="script.js" />
+    </body>
+</html>
