@@ -3,26 +3,39 @@
 	<head>
         <title>What Do I Need To Get On The Final?</title>
         <meta name="description" content="What grade do I need on the final to pass the class?">
-		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" media="screen"/>
+		<link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
         <div id="title">What Do I Need To Get On The Final?</div>
-        <div id="content">
-			<div class="btn-group" data-toggle="buttons-radio">
-				<button type="button" class="btn">Left</button>
-				<button type="button" class="btn">Middle</button>
-				<button type="button" class="btn">Right</button>
+		<div class="btn-group-wrap">
+			<div class="btn-group" data-toggle="buttons-radio" id="calculator-selector">
+				<!--<button type="button" class="btn btn-primary" id="test">Test</button>-->
+				<button type="button" class="btn btn-primary" id="midterm">Midterm</button>
+				<button type="button" class="btn btn-primary active" id="final">Final</button>
 			</div>
-            Currently I have a <input type="text" class="tb" id="current" value="95" onkeypress="return isNumberKey(event)" onkeyup="updateScore()"/>% in the class.<br />
-            I'm aiming to get at least a <input type="text" class="tb" id="desired" onkeypress="return isNumberKey(event)" value="90" onkeyup="updateScore()"/>%<br />
-            The final is worth <input type="text" class="tb" id="weight" value="20" onkeypress="return isNumberKey(event)" onkeyup="updateScore()"/>% of my grade.<br /><br />
-            So I need to get at least a <span id="result">70%</span> on the final.
-        </div>
+		</div>
+		<div class="calculator-wrapper">
+			<div id="final-calculator" class="calculator">
+				Currently I have a <input type="text" class="tb" id="final_current" value="95" onkeypress="return isNumberKey(event)" onkeyup="updateScoreFinal()"/>% in the class.<br />
+				I'm aiming to get at least a <input type="text" class="tb" id="final_desired" onkeypress="return isNumberKey(event)" value="90" onkeyup="updateScoreFinal()"/>%<br />
+				The final is worth <input type="text" class="tb" id="final_weight" value="20" onkeypress="return isNumberKey(event)" onkeyup="updateScoreFinal()"/>% of my grade.<br /><br />
+				So I need to get at least a <span id="final_result" class="result">70%</span> on the final.
+			</div>
+			<div id="midterm-calculator" class="calculator hidden">
+				Currently I have a <input type="text" class="tb" id="midterm_current" onkeypress="return isNumberKey(event)" onkeyup="updateScoreMidterm()" value="90">%  in the class,<br />
+				which makes up <input type="text" class="tb" id="midterm_counterweight" onkeypress="return isNumberKey(event)" onkeyup="updateScoreMidterm()" value="30">% of my grade so far.<br />
+				My midterm is worth <input type="text" class="tb" id="midterm_weight" onkeypress="return isNumberKey(event)" onkeyup="updateScoreMidterm()" value="20">% of my grade,<br />
+				So in order to get a <input type="text" class="tb" id="midterm_desired" onkeypress="return isNumberKey(event)" onkeyup="updateScoreMidterm()" value="93">% after the midterm,<br />
+				I need to get at least a <span id="midterm_result" class="result">97.5%</span> on the midterm.
+			</div>
+		</div>
         <div id="footer">
             Created by <a href="http://www.zuhairparvez.com">Zuhair Parvez</a>, &copy 2012
         </div>
-	<script src="js/script.js" />
-	<script src="js/bootstrap.min.js" />
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-button.js"></script>
     </body>
 </html>

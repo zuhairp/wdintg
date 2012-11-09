@@ -1,5 +1,5 @@
-﻿function calculateScore(currentGrade, finalWeight, desiredGrade) {
-    return (desiredGrade - (1 - finalWeight)*currentGrade) / finalWeight;
+﻿function calculateScore(currentGrade, weight, counterweight,  desiredGrade) {
+    return (desiredGrade*(counterweight+weight) - (counterweight)*currentGrade) / weight;
 }
 
 function isNumberKey(evt) {
@@ -10,14 +10,36 @@ function isNumberKey(evt) {
     return true;
 }
 
-function updateScore() {
-    var current = parseFloat(document.getElementById("current").value);
-    var weight = parseFloat(document.getElementById("weight").value) / 100; //Reported as whole number
-    var desired = parseFloat(document.getElementById("desired").value);
-    var needed = calculateScore(current, weight, desired);
+function updateScoreFinal() {
+    var current = parseFloat(document.getElementById("final_current").value);
+    var weight = parseFloat(document.getElementById("final_weight").value) / 100; //Reported as whole number
+    var desired = parseFloat(document.getElementById("final_desired").value);
+    var needed = calculateScore(current, weight, 1.0-weight, desired);
+
+    needed = Math.round(needed * 100) / 100; 
+
+    var response = document.getElementById("final_result");
+    response.innerHTML = needed+"%";
+}
+
+function updateScoreMidterm() {
+    var current = parseFloat(document.getElementById("midterm_current").value);
+    var weight = parseFloat(document.getElementById("midterm_weight").value) / 100; //Reported as whole number
+    var counterweight = parseFloat(document.getElementById("midterm_counterweight").value) / 100; //Reported as whole number
+    var desired = parseFloat(document.getElementById("midterm_desired").value);
+    var needed = calculateScore(current, weight, counterweight,desired);
 
     needed = Math.round(needed * 100) / 100;
 
-    var response = document.getElementById("result");
+    var response = document.getElementById("midterm_result");
     response.innerHTML = needed+"%";
 }
+
+$(document).ready(function(){
+	$('.btn').click(function(event){
+		$('.calculator').hide(0);
+		toShow = $(event.target).attr('id');
+		toShow += "-calculator";
+		$("#"+toShow).show(0);
+	});
+})
